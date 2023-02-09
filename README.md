@@ -11,11 +11,11 @@ docker-compose up -d
 ## Login to container
 ### php
 ```
-docker exec -it php-training1 bash
+docker exec -it php-training1 sh
 ```
 ### mysql
 ```
-docker exec -it mysql-training1 bash
+docker exec -it mysql-training1 sh
 ```
 
 ## Url
