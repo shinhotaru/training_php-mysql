@@ -24,7 +24,7 @@ $category_books = [
 */
 
 $input;
-$input_str;
+$input_text;
 $result;
 
 ?>
@@ -99,7 +99,7 @@ $result;
               </p>
             </div>
             <div class="card-footer text-muted">
-              入力値：<?= $input_str ?? '' ?>
+              入力値：<?= $input_text ?? '' ?>
             </div>
           </div>
         </div>
