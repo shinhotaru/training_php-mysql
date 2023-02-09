@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Training Database & PHP</title>
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <ul class="nav nav-tabs mt-2" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button 
+            type="button"
+            class="nav-link active"
+            id="php1-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#php1-tab-panel"
+            data-target-json="/config/tr_php.json"
+            role="tab"
+            aria-controls="php1-tab-panel"
+            aria-selected="true"
+          >課題1（PHP基礎）</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button 
+            type="button"
+            class="nav-link"
+            id="php2-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#php2-tab-panel"
+            data-target-json="/config/tr_php_mysql.json"
+            role="tab"
+            aria-controls="php2-tab-panel"
+            aria-selected="false"
+          >課題2（PHP + Database）</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button 
+            type="button"
+            class="nav-link"
+            id="php3-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#php3-tab-panel"
+            data-target-json="/config/tr_php_class.json"
+            role="tab"
+            aria-controls="php3-tab-panel"
+            aria-selected="false"
+          >課題3（PHP Class）</button>
+        </li>
+      </ul>
+
+      <div id="php-tab-content" class="tab-content mt-2 ml-4">
+        <div class="tab-pane active" id="php1-tab-panel" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+          <h4>PHP基礎</h4>
+        </div>
+        <div class="tab-pane" id="php2-tab-panel" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+          <h4>PHP + Database</h4>
+        </div>
+        <div class="tab-pane" id="php3-tab-panel" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+          <h4>PHP Class</h4>
+        </div>
+      </div>
+    </div>
+    <script src="/lib/jquery/jquery-3.6.3.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    $(function() {
+      var active = $('button.active')
+      $.getJSON(active.data('target-json') , function(data) {
+        createAccordion(data, active.data('bs-target'))
+      })
+    })
+
+    $('button.nav-link').click(function () {
+      var target = $(this).data('bs-target')
+
+      if ($(target).children('.accordion').length == 0) {
+        $.getJSON($(this).data('target-json'), function (data) {
+          createAccordion(data, target)
+        })
+      }
+    })
+
+    function createAccordion(json, target) {
+      console.log
+      accordion = $('<div class="accordion m-3 vw-25" id="accordionBasic">')
+      $.each(json, function (index, value) {
+        item = $('<div class="accordion-item">')
+        header = $(`<h2 class="accordion-header" id="heading${index}">`)
+          .append(`<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="false" aria-controls="collapse${index}">${value.title}</button>`)
+        body = $(`<div id="collapse${index}" class="accordion-collapse collapse" aria-labelledby="heading${index}" data-bs-parent="#accordionBasic">`)
+          .append(
+            $('<div class="accordion-body">')
+              .append(
+                $('<h6 class="card-subtitle text-muted my-2">').append('内容'),
+                $('<p class="card-text px-3">').append(value.text.join("<br>")),
+                $('<h6 class="card-subtitle text-muted my-2">').append('対象ファイル'),
+                $('<p class="card-text px-3">').append(value.file_name),
+                $('<h6 class="card-subtitle text-muted my-2">').append('動作確認'),
+                $(`<a href="${value.link}" class="card-link px-3" target="_blank">`).append("動作確認はコチラから（別タブで開きます）"),
+                $('<h6 class="card-subtitle text-muted my-2">').append('Goalイメージ'),
+                createCarousel(value.id, value.carousel)
+              )
+          )
+        item.append(header).append(body)
+        accordion.append(item)
+      })
+      accordion.appendTo(target)
+    }
+
+    function createCarousel(id, images) {
+      if (images.length == 0) return
+      var carousel = $(`<div id="carousel${id}" class="carousel carousel-dark slide mx-3 py-3 w-75" data-bs-touch="false" data-bs-interval="false">`)
+      var indicators = $('<ol class="carousel-indicators">')
+      var carousel_inner = $('<div class="carousel-inner">')
+
+      var prev = $(`<a class="carousel-control-prev bg-secondary" href="#carousel${id}" role="button" data-bs-slide="prev" style="width: 6%;">`)
+      var next = $(`<a class="carousel-control-next bg-secondary" href="#carousel${id}" role="button" data-bs-slide="next" style="width: 6%;">`)
+      prev.append('<span class="carousel-control-prev-icon" aria-hidden="true"></span>').append('<span class="visually-hidden">Previous</span>')
+      next.append('<span class="carousel-control-next-icon" aria-hidden="true"></span>').append('<span class="visually-hidden">Next</span>')
+
+      $.each(images, function (index, image) {
+        li = $(`<li data-bs-target="#carouselWithIndicators" data-bs-slide-to="${index}">`)
+        div = $('<div class="carousel-item">')
+        if (index == 0) {
+          li.addClass("active")
+          div.addClass("active")
+        }
+        div.append(`<img src="${image}" class="d-block w-100">`)
+        indicators.append(li)
+        carousel_inner.append(div)
+      })
+
+      carousel.append(indicators).append(carousel_inner).append(prev).append(next)
+      return carousel;
+    }
+
+    </script>
+  </body>
+</html>

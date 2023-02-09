@@ -1,0 +1,111 @@
+[
+  {
+    "id": "Task1-1",
+    "title": "課題1-1",
+    "skill": "変数",
+    "text": [
+      "変数に文字列や数値を代入して使ってみましょう。",
+      "対象ファイル内のコメントにある指定の変数を記述してださい。",
+      "1．文字列を扱って挨拶文を作りましょう",
+      "2．数値を扱って購入金額を求めましょう"
+    ],
+    "file_name": "tr_php/01/task01.php",
+    "link": "/tr_php/01/task01.php",
+    "carousel": [
+      "/public/img/carousel/php/01/g_task01-1.png",
+      "/public/img/carousel/php/01/g_task01-2.png"
+    ]
+  },
+  {
+    "id": "Task1-2",
+    "title": "課題1-2",
+    "skill": "関数",
+    "text": [
+      "画面で選択したモードによって、画面に出力する内容を変更します。",
+      "・画面で「test」を選択して「送信」ボタンを押したら、「テスト」と出力してください。",
+      "・画面で「production」を選択して「送信」ボタンを押したら、「本番」と出力してください。",
+      "・未選択で「送信」ボタンを押したら、「未選択」と出力してください。"
+    ],
+    "file_name": "tr_php/01/task02.php",
+    "link": "/tr_php/01/task02.php",
+    "carousel": [
+      "/public/img/carousel/php/01/g_task02-1.png",
+      "/public/img/carousel/php/01/g_task02-2.png"
+    ]
+  },
+  {
+    "id": "Task1-3",
+    "title": "課題1-3",
+    "skill": "条件分岐",
+    "text": [
+      "画面で入力した情報によって、映画のチケット代を出力する機能をつくりましょう。",
+      "・18歳以上の場合：1,800円",
+      "・17歳以下の場合：1,200円",
+      "・購入日が10日/20日/30日のいずれかの場合(年齢問わず)：1,000円"
+    ],
+    "file_name": "tr_php/01/task03.php",
+    "link": "/tr_php/01/task03.php",
+    "carousel": [
+      "/public/img/carousel/php/01/g_task03-1.png",
+      "/public/img/carousel/php/01/g_task03-2.png"
+    ]
+  },
+  {
+    "id": "Task1-4",
+    "title": "課題1-4",
+    "skill": "繰り返し",
+    "text": [
+      "画面で選択できるSymbolを、入力した縦・横の分だけ描画する機能をつくりましょう。"
+    ],
+    "file_name": "tr_php/01/task04.php",
+    "link": "/tr_php/01/task04.php",
+    "carousel": [
+      "/public/img/carousel/php/01/g_task04-1.png",
+      "/public/img/carousel/php/01/g_task04-2.png"
+    ]
+  },
+  {
+    "id": "Task1-5",
+    "title": "課題1-5",
+    "skill": "配列",
+    "text": [
+      "本を格納している配列（$books）から、指定の条件に一致した要素を取得して画面に出力する機能をつくりましょう。",
+      "以下の条件で検索してください。",
+      "・全ての本を取得する",
+      "・指定の順番の本を取得する",
+      "・順番が奇数番の本を取得する",
+      "・順番が偶数番の本を取得する"
+    ],
+    "file_name": "tr_php/01/task05.php",
+    "link": "/tr_php/01/task05.php",
+    "carousel": [
+      "/public/img/carousel/php/01/g_task05-1.png",
+      "/public/img/carousel/php/01/g_task05-2.png",
+      "/public/img/carousel/php/01/g_task05-3.png",
+      "/public/img/carousel/php/01/g_task05-4.png"
+    ]
+  },
+  {
+    "id": "Task1-6",
+    "title": "課題1-6",
+    "skill": "連想配列・多次元配列",
+    "text": [
+      "カテゴリー別に本を格納している配列（$category_books）から、指定の条件に一致した要素を取得して画面に出力する機能をつくりましょう。",
+      "1．対象ファイル内のコメントにある通り、Pythonカテゴリーの本を追加してください。",
+      "2．以下の条件で検索してください。",
+      "・全ての本を取得する",
+      "・指定したカテゴリーの本を取得する",
+      "・指定した値段の範囲に当てはまる本を取得する",
+      "・冊数が多いカテゴリーのみ取得する"
+    ],
+    "file_name": "tr_php/01/task06.php",
+    "link": "/tr_php/01/task06.php",
+    "carousel": [
+      "/public/img/carousel/php/01/g_task06-1.png",
+      "/public/img/carousel/php/01/g_task06-2.png",
+      "/public/img/carousel/php/01/g_task06-3.png",
+      "/public/img/carousel/php/01/g_task06-4.png",
+      "/public/img/carousel/php/01/g_task06-5.png"
+    ]
+  }
+]
