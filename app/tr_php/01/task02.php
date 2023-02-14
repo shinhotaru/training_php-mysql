@@ -40,7 +40,7 @@ $purchase_info_two;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>課題1</title>
+    <title>課題1-2</title>
     <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
