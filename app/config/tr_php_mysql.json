@@ -2,34 +2,64 @@
   {
     "id": "Task2-1",
     "title": "課題2-1",
-    "skill": "--",
+    "skill": "PHPからDatabaseにアクセスする（全件取得）",
     "text": [
-      "準備中です(2023年2月13日予定)"
+      "usersテーブルを使用します。",
+      "usersテーブルには初期状態で50件のユーザーデータが登録されています。",
+      "この50件全てのデータを取得して、画面に表示してください。"
     ],
     "file_name": "tr_php/02/user_list.php",
     "link": "/tr_php/02/user_list.php",
-    "carousel": []
+    "carousel": [
+      "/public/img/carousel/php/02/g_task01-1.png",
+      "/public/img/carousel/php/02/g_task01-2.png"
+    ]
   },
   {
     "id": "Task2-2",
     "title": "課題2-2",
-    "skill": "--",
+    "skill": "PHPからDatabaseにアクセスする（条件付取得）",
     "text": [
-      "準備中です(2023年2月13日予定)"
+      "課題2−1で作成した一覧画面に検索機能を追加します。",
+      "以下の項目で検索できるようにしましょう。複数の条件を指定した場合は「指定した全ての条件を満たす検索」となります。",
+      "・ID（完全一致）",
+      "・名前（部分一致）",
+      "・名前カナ（部分一致）",
+      "・年齢（範囲検索）",
+      "・性別（完全一致）",
+      "・Email（部分一致）"
     ],
-    "file_name": "tr_php/02/user_list.php",
-    "link": "/tr_php/02/user_list.php",
-    "carousel": []
+    "file_name": "tr_php/02/search_user_list.php",
+    "link": "/tr_php/02/search_user_list.php",
+    "carousel": [
+      "/public/img/carousel/php/02/g_task02-1.png",
+      "/public/img/carousel/php/02/g_task02-2.png",
+      "/public/img/carousel/php/02/g_task02-3.png"
+    ]
   },
   {
     "id": "Task2-3",
     "title": "課題2-3",
-    "skill": "--",
+    "skill": "PHPからDatabaseにアクセスする（データ登録）",
     "text": [
-      "準備中です(2023年2月13日予定)"
+      "usersテーブルに、ユーザーデータを登録できる画面を作成します。",
+      "1．以下の項目を画面で入力し、「送信」ボタンを押下したらusersテーブルに登録されるようにしましょう。登録後はsearch_user_list.phpに遷移してください。",
+      "・名前",
+      "・名前カナ",
+      "・年齢",
+      "・性別",
+      "・Email",
+      "2．送信された値のチェックをおこない、不正な値と判断されたらエラーを出すようにしましょう。",
+      "・名前：必須",
+      "・名前カナ：必須",
+      "・年齢：半角数字のみ",
+      "・性別：man,womanのみ",
+      "・Email：メールアドレス形式"
     ],
-    "file_name": "tr_php/02/user_create.php",
-    "link": "/tr_php/02/user_create.php",
-    "carousel": []
+    "file_name": "tr_php/02/create_user.php",
+    "link": "/tr_php/02/create_user.php",
+    "carousel": [
+      "/public/img/carousel/php/02/g_task03-1.png"
+    ]
   }
 ]
