@@ -68,3 +68,50 @@ INSERT INTO users (name, name_kana, gender, age, mail_address, created_at, updat
 INSERT INTO users (name, name_kana, gender, age, mail_address, created_at, updated_at) VALUES ('小池 譲介', 'コイケ ジョウスケ', 'man', CEIL(20 + RAND() * 80), 'test48@example.com', now(), now());
 INSERT INTO users (name, name_kana, gender, age, mail_address, created_at, updated_at) VALUES ('丹羽 伸次郎', 'ニワ シンジロウ', 'man', CEIL(20 + RAND() * 80), 'test49@example.com', now(), now());
 INSERT INTO users (name, name_kana, gender, age, mail_address, created_at, updated_at) VALUES ('田中 正輝', 'タナカ マサキ', 'man', CEIL(20 + RAND() * 80), 'test50@example.com', now(), now());
+
+CREATE TABLE books (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  author VARCHAR(255) NOT NULL,
+  page INT NOT NULL,
+  price INT NOT NULL,
+  created_at DATETIME,
+  updated_at DATETIME,
+  deleted_at DATETIME,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE technical_books (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  author VARCHAR(255) NOT NULL,
+  page INT NOT NULL,
+  price INT NOT NULL,
+  coding_language VARCHAR(30) NOT NULL,
+  created_at DATETIME,
+  updated_at DATETIME,
+  deleted_at DATETIME,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE orders (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  user_id BIGINT NOT NULL,
+  total_price INT NOT NULL,
+  ordered_at DATETIME,
+  created_at DATETIME,
+  updated_at DATETIME,
+  deleted_at DATETIME,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE order_books (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  order_id BIGINT NOT NULL,
+  book_id BIGINT NOT NULL,
+  price INT NOT NULL,
+  created_at DATETIME,
+  updated_at DATETIME,
+  deleted_at DATETIME,
+  PRIMARY KEY (id)
+);

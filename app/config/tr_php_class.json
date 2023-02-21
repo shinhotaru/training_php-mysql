@@ -2,12 +2,60 @@
   {
     "id": "Task3-1",
     "title": "課題3-1",
-    "skill": "--",
+    "skill": "Class",
     "text": [
-      "準備中です(2023年2月13日予定)"
+      "書籍の管理をするBookクラスを作成し、書籍情報をテーブルに登録できるようにします。",
+      "<b>1. 以下のプロパティを設定してください。</b>",
+      "・タイトル",
+      "・著者",
+      "・ページ数",
+      "・価格（税込）",
+      "<b>2．クラスに以下のような機能を必ずもたせてください。その他は自由です。</b>",
+      "・設定されているプロパティを使用して、booksテーブルにレコードを登録する",
+      "・プロパティに設定される値が正しいか以下のようにチェックする",
+      "&nbsp;&nbsp;①タイトルが未入力でないこと&nbsp",
+      "&nbsp;&nbsp;②著者が未入力でないこと&nbsp",
+      "&nbsp;&nbsp;③ページ数が半角数字であること&nbsp",
+      "&nbsp;&nbsp;④価格（税込）が半角数字である、かつ1以上999999以下の数値であること&nbsp",
+      "<b>3．create_book.phpにて、画面で入力した値を、作成したBookクラスを使ってbooksテーブルに書籍情報を登録してください。</b>",
+      "・登録が成功したら「登録が成功しました」と画面に表示します。",
+      "・入力した内容に誤りがあり、登録が失敗したらエラー内容を画面に表示します。"
     ],
-    "file_name": "--",
-    "link": "/",
-    "carousel": []
+    "file_name": "tr_php/03/classes/book.php, tr_php/03/create_book.php",
+    "link": "/tr_php/03/create_book.php",
+    "carousel": [
+      "/public/img/carousel/php/03/g_task01-pre.png"
+    ]
+  },
+  {
+    "id": "Task3-2",
+    "title": "課題3-2",
+    "skill": "Class",
+    "text": [
+      "課題3−1で登録した書籍を注文できる機能を作成します。",
+      "画面で買い物かごにいれた書籍を注文情報テーブル（orders, order_books）に登録する機能をもったOrderBookクラスを作成しましょう。",
+      "「tr_php/03/create_order.php」にて、画面で入力した値を、作成したOrderBookクラスを使って注文情報を登録してください。",
+      "※ordersにuser_idを入れる必要がありますが、固定で「1」としてください。将来的にユーザーを切り替えられることを想定しましょう。"
+    ],
+    "file_name": "tr_php/03/classes/order_book.php, tr_php/03/create_order.php",
+    "link": "/tr_php/03/order_book.php",
+    "carousel": [
+      "/public/img/carousel/php/03/g_task02-pre.png"
+    ]
+  },
+  {
+    "id": "Task3-3",
+    "title": "課題3-3",
+    "skill": "Class",
+    "text": [
+      "課題3−2で注文した履歴を注文できる機能を作成します。",
+      "画面に表示する注文履歴を取得する機能を持ったUserOrderHistoryクラスを作成しましょう。",
+      "※履歴を表示する際に条件となるuser_idは、固定で「1」としてください。将来的にユーザーを切り替えられることを想定しましょう。"
+    ],
+    "file_name": "tr_php/03/classes/user_order_history.php, tr_php/03/order_history.php",
+    "link": "/tr_php/03/order_history.php",
+    "carousel": [
+      "/public/img/carousel/php/03/g_task03-pre.png"
+    ]
   }
 ]

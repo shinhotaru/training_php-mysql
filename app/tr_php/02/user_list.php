@@ -1,5 +1,5 @@
 <?php
-$input =filter_input_array(INPUT_GET) ?? [];
+$input = filter_input_array(INPUT_GET) ?? [];
 
 /*
  * 課題2、課題3ではPHPの拡張モジュールである「PDO」を使用していきます。

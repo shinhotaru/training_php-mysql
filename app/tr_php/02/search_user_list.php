@@ -1,5 +1,5 @@
 <?php
-$input =filter_input_array(INPUT_GET) ?? [];
+$input = filter_input_array(INPUT_GET) ?? [];
 
 ?>
 
