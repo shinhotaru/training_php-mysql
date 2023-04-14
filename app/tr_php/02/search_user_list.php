@@ -91,7 +91,7 @@ $input = filter_input_array(INPUT_GET) ?? [];
 
       <div class="row">
         <h5 class="col-10">ユーザー一覧</h5>
-        <a  href="user_create.php" class="btn btn-success col-2">新規作成</a>
+        <a  href="create_user.php" class="btn btn-success col-2">新規作成</a>
       </div>
       <table class="table table-striped">
         <thead>
