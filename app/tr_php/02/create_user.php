@@ -17,7 +17,7 @@ $input = filter_input_array(INPUT_POST) ?? [];
     <div class="container">
       <h4 class="mt-5">ユーザー管理（登録）</h4>
       <h5>ユーザー情報を入力してください</h5> 
-      <form action="create_create.php" method="POST">
+      <form action="create_.php" method="POST">
         <div class="row mb-5">
           
           <div class="col-6">
