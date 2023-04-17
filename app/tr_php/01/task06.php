@@ -95,7 +95,7 @@ $result;
             <div class="card-body">
               <p class="card-text">
                 <!-- ここに結果を出力しましょう -->
-                <?= $resul ?? '' ?>
+                <?= $result ?? '' ?>
               </p>
             </div>
             <div class="card-footer text-muted">
