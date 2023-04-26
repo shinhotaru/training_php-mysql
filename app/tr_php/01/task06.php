@@ -45,7 +45,7 @@ $result;
         <div class="col-5">
           <h4>条件を指定して本を取得します</h4>
           <form action="/tr_php/01/task06.php" method="POST">
-            <h5 class="text-muted mt-3">クイック検索</h3>
+            <h5 class="text-muted mt-3">クイック検索</h5>
             <div class="form-check">
               <input name="mode" class="form-check-input" type="radio" id="formRadioAll" value="all">
               <label class="form-check-label" for="formRadioAll">全て</label>
@@ -68,7 +68,7 @@ $result;
               </select>
             </div>
 
-            <h5 class="text-muted mt-3">値段指定</h3>
+            <h5 class="text-muted mt-3">値段指定</h5>
             <div class="input-group mb-2">
               <div class="input-group-text">
                 <input name="mode" class="form-check-input" type="radio" value="price" >
