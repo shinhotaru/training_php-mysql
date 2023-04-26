@@ -55,7 +55,7 @@ $result;
               <label class="form-check-label" for="formRadioMost">冊数が多いカテゴリー</label>
             </div>
 
-            <h5 class="text-muted mt-3">カテゴリー指定</h3>
+            <h5 class="text-muted mt-3">カテゴリー指定</h5>
             <div class="input-group mb-2">
               <div class="input-group-text">
                 <input name="mode" class="form-check-input" type="radio" value="category" >
