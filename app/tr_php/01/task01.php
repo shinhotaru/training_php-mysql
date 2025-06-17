@@ -1,4 +1,7 @@
 <?php
+$name = 'Felix';
+$greet = 'Good morning!';
+$message = 'Message: ' . $name . ', ' . $greet;
 
 /*
  * 1．文字列を扱って挨拶文を作りましょう
