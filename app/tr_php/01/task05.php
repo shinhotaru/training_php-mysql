@@ -1,4 +1,4 @@
-<?php
+ <?php
 $books = [
     '誰もがあきらめずにすむPHP超入門',
     'スラスラわかるPHP',
@@ -7,10 +7,57 @@ $books = [
     'よくわかるPHPの教科書',
 ];
 
-$input;
-$input_text;
-$result;
+$input=[];
+$input_text='';
+$result='';
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $input = filter_input_array(INPUT_POST, [
+        'mode' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+        'order_number' => FILTER_VALIDATE_INT,
+    ]);
+
+    $mode = $input['mode'] ?? '';
+    $order_number = $input['order_number'] ?? 0;
+
+    switch ($mode) {
+        case 'all':
+            $result = implode('<br>', $books);
+            $input_text = '全て';
+            break;
+
+        case 'odd':
+            $filtered = array_filter($books, function ($_, $index) {
+                return $index % 2 === 0; // 0-based index: 0 = 1st, 2 = 3rd...
+            }, ARRAY_FILTER_USE_BOTH);
+            $result = implode('<br>', $filtered);
+            $input_text = '奇数番';
+            break;
+
+        case 'even':
+            $filtered = array_filter($books, function ($_, $index) {
+                return $index % 2 === 1; // 1-based: index 1 = 2nd
+            }, ARRAY_FILTER_USE_BOTH);
+            $result = implode('<br>', $filtered);
+            $input_text = '偶数番';
+            break;
+
+        case 'order_number':
+            if ($order_number >= 1 && $order_number <= count($books)) {
+                $result = $books[$order_number - 1];
+                $input_text = "{$order_number}冊目";
+            } else {
+                $result = '指定された冊目の本は存在しません。';
+                $input_text = "無効な入力";
+            }
+            break;
+
+        default:
+            $result = '検索条件を選んでください。';
+            $input_text = '未選択';
+            break;
+    }
+}
 ?>
 
 <!DOCTYPE html>

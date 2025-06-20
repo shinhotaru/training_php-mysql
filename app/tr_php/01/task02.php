@@ -12,8 +12,12 @@
  * ・コネクト太郎さんに、「おはようございます！！」と挨拶をするメッセージを、$message_oneに代入してください。
  * ・コネクト次郎さんに、「おやすみなさい！！」と挨拶をするメッセージを、$message_twoに代入してください。
 */
-$message_one;
-$message_two;
+function getGreetingMessage($name, $greeting) {
+    return "$greeting, $name!";
+}
+
+$message_one = getGreetingMessage("Connect Taro", "Good morning!!");
+$message_two = getGreetingMessage("Connect Jiro", "Good night!!");
 
 
 /*
@@ -28,9 +32,15 @@ $message_two;
  * getGreetingMessageをつかって、2つの購入情報を取得します。
  * ・本棚（10,000円）を2個購入する場合の購入情報をpurchase_info_oneに代入してください。
  * ・ケーキ（700円）を8個購入する場合の購入情報をpurchase_info_oneに代入してください。
-*/
-$purchase_info_one;
-$purchase_info_two;
+*/ 
+function getPurchaseInformation($product_name, $price, $quantity) {
+    $total = $price * $quantity;
+    return "If you purchase {$product_name} {$quantity}, the purchase price will be {$total} 
+yen.";
+}
+
+$purchase_info_one = getPurchaseInformation("bookshelf", 10000, 2);
+$purchase_info_two = getPurchaseInformation("cake", 700, 8);
 
 ?>
 
