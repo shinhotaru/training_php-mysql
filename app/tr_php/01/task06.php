@@ -12,8 +12,13 @@ $category_books = [
     'ruby' => [
         ['title' => 'たのしいRuby', 'price' => 1400],
     ],
+   'python' => [
+['title' => 'たのしいPython', 'price' => 1280],
+['title' => 'スラスラわかるPython', 'price' => 1500],
+['title' => 'いちばんやさしいPythonの絵本', 'price' => 800],
+['title' => '退屈なことはPythonにやらせよ', 'price' => 2200],
+]
 ];
-
 /* Pythonが含まれていないので、$category_booksに以下の要素を追加する処理を書いてください。
  * キー：python
  * 要素：
@@ -23,10 +28,116 @@ $category_books = [
  *  4冊目 -> タイトル:退屈なことはPythonにやらせよう, 値段:2,200円
 */
 
-$input;
-$input_text;
-$result;
+$input = filter_input_array(INPUT_POST, [
+    'mode' => FILTER_DEFAULT,
+    'category' => FILTER_DEFAULT,
+    'min_price' => FILTER_VALIDATE_INT,
+    'max_price' => FILTER_VALIDATE_INT,
+]);
 
+if (!is_array($input)) {
+    $input = []; // Prevent null access warnings
+}
+
+
+if (empty($input['mode']) && !empty($input['category'])) {
+    $input['mode'] = 'category';
+}
+
+
+$min = isset($input['min_price']) && $input['min_price'] !== false ? $input['min_price'] : 0;
+$max = isset($input['max_price']) && $input['max_price'] !== false ? $input['max_price'] : PHP_INT_MAX;
+
+$input_text='';
+$result='';
+
+$checked = [
+    'all' => ($input['mode'] ?? '') === 'all' ? 'checked' : '',
+    'most' => ($input['mode'] ?? '') === 'most' ? 'checked' : '',
+    'category' => ($input['mode'] ?? '') === 'category' ? 'checked' : '',
+    'price' => ($input['mode'] ?? '') === 'price' ? 'checked' : '',
+];
+
+$selected_category = $input['category'] ?? '';
+$min_price_val = isset($input['min_price']) && $input['min_price'] !== false ? $input['min_price'] : '';
+$max_price_val = isset($input['max_price']) && $input['max_price'] !== false ? $input['max_price'] : '';
+
+
+if (!empty($input['mode'])) {
+    switch ($input['mode']) {
+        case 'all':
+            $input_text = '全て';
+            $list = [];
+            foreach ($category_books as $cat => $books) {
+               $list[] = "【{$cat}】";
+                foreach ($books as $book) {
+                    $priceFormatted = number_format($book['price']);
+                    $list[] = "{$book['title']}({$priceFormatted}円）";
+                }
+            }
+            $result = implode('<br>', $list);
+            break;
+
+        case 'most':
+            $input_text = '冊数が多いカテゴリー';
+            // Find the category with the most books
+            $maxCount = 0;
+            $maxCategory = null;
+            foreach ($category_books as $cat => $books) {
+                if (count($books) > $maxCount) {
+                    $maxCount = count($books);
+                    $maxCategory = $cat;
+                }
+            }
+             $list = [];
+            if (!empty($maxCategory) && isset($category_books[$maxCategory])) {
+                $list[] = "【{$maxCategory}】";
+                foreach ($category_books[$maxCategory] as $book) {
+                    $priceFormatted = number_format($book['price']);
+                    $list[] = "{$book['title']}({$priceFormatted}円）";
+                }
+            } else {
+                $list[] = '該当カテゴリーがありません。';
+            }
+              $result = implode('<br>', $list);
+            break;
+
+        case 'category':
+            if (!empty($input['category']) && isset($category_books[$input['category']])) {
+                $cat = $input['category'];
+                $input_text = "カテゴリー: " . strtoupper($cat);
+                $list= ["【{$cat}】"];
+                foreach ($category_books[$cat] as $book) {
+                $priceFormatted = number_format($book['price']);
+                $list[] = "{$book['title']}({$priceFormatted}円）";
+                }
+                       $result = implode('<br>', $list);;
+           } else {
+                $input_text = 'カテゴリー未選択または不正なカテゴリー';
+                $result = '';
+            }
+            break;
+
+    case 'price':
+    $input_text = "価格: {$min}円以上 {$max}円以下";
+
+    $list = [];
+    foreach ($category_books as $cat => $books) {
+        foreach ($books as $book) {
+            if ($book['price'] >= $min && $book['price'] <= $max) {
+                $priceFormatted = number_format($book['price']);
+                $list[] = "【{$cat}】{$book['title']}({$priceFormatted}円）";
+            }
+        }
+    }
+      $result = count($list) > 0 ? implode('<br>', $list) : '該当する本がありません。';
+            break;
+
+        default:
+            $input_text = '不正な選択です。';
+            break;
+    }
+}
 ?>
 
 <!DOCTYPE html>
