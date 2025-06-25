@@ -171,7 +171,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </tr>
 <?php endforeach; ?>
         </tbody>
-      </table>Â
+      </table>
     </div>
     <script src="/lib/jquery/jquery-3.6.3.min.js"></script>
     <script>
