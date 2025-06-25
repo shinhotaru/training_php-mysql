@@ -1,6 +1,54 @@
 <?php
 $input = filter_input_array(INPUT_POST) ?? [];
+$errors = [];
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Validation
+    if (empty($input['name'])) {
+        $errors[] = '名前は必須です';
+    }
+
+    if (empty($input['name_kana'])) {
+        $errors[] = '名前カナは必須です';
+    }
+
+    if (!isset($input['age']) || !preg_match('/^[0-9]+$/', $input['age'])) {
+        $errors[] = '年齢は半角数字で入力してください';
+    }
+
+    if (!in_array($input['gender'] ?? '', ['man', 'woman'])) {
+        $errors[] = '不正な性別です';
+    }
+
+    if (!filter_var($input['mail_address'], FILTER_VALIDATE_EMAIL)) {
+        $errors[] = 'メールアドレス形式で入力してください';
+    }
+
+    // If no errors, insert into database and redirect
+    if (empty($errors)) {
+        // DB connection
+        $dsn = 'mysql:host=mysql-training1;dbname=training;charset=utf8mb4';
+        $username = 'training';
+        $password = 'secret';
+
+        try {
+            $pdo = new PDO($dsn, $username, $password);
+            $stmt = $pdo->prepare('INSERT INTO users (name, name_kana, age, gender, mail_address) VALUES (?, ?, ?, ?, ?)');
+            $stmt->execute([
+                $input['name'],
+                $input['name_kana'],
+                $input['age'],
+                $input['gender'],
+                $input['mail_address']
+            ]);
+
+            header('Location: search_user_list.php');
+            exit;
+        } catch (PDOException $e) {
+            $errors[] = 'データベースエラー: ' . htmlspecialchars($e->getMessage());
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -76,16 +124,16 @@ $input = filter_input_array(INPUT_POST) ?? [];
           </div>
 
           <div class="col-6">
+           <?php if (!empty($errors)): ?>
             <div class="alert alert-danger" role="alert">
               <ul>
-                <li>名前は必須です</li>
-                <li>年齢は半角数字で入力してください</li>
-                <li>不正な性別です</li>
-                <li>メールアドレス形式で入力してください</li>
+               <?php foreach ($errors as $error): ?>
+                                <li><?= htmlspecialchars($error) ?></li>
+                            <?php endforeach; ?>
               </ul>
             </div>
+    <?php endif; ?>
           </div>
-
         </div>
       </form>
       <a  href="user_list.php" class="btn btn-danger col-2">一覧へ戻る</a>
