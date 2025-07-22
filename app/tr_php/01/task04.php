@@ -1,9 +1,30 @@
 <?php
-$input;
+$input = [];
+$symbol = '';
+$height = 0;
+$width = 0;
 $input_text = 'Symbol【】/ Height【】/ Width【】';
-
 $draw = '';
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $input = filter_input_array(INPUT_POST, [
+        'symbol' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+        'height' => FILTER_VALIDATE_INT,
+        'width'  => FILTER_VALIDATE_INT,
+    ]);
+
+    $symbol = $input['symbol'] ?? '';
+    $height = $input['height'] ?? 0;
+    $width  = $input['width'] ?? 0;
+
+    // Only draw if height and width are valid integers and positive
+    if ($symbol && $height > 0 && $width > 0) {
+        $line = str_repeat($symbol, $width);
+        $draw = implode("<br>", array_fill(0, $height, $line));
+    }
+
+    $input_text = sprintf('Symbol【%s】/ Height【%d】/ Width【%d】', $symbol, $height, $width);
+}
 ?>
 
 <!DOCTYPE html>

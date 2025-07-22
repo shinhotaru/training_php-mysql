@@ -1,4 +1,7 @@
 <?php
+$name = 'Felix';
+$greet = 'Good morning!';
+$message = 'Message: ' . $name . ', ' . $greet;
 
 /*
  * 1．文字列を扱って挨拶文を作りましょう
@@ -7,7 +10,10 @@
  * その後、$nameと$greetを使用してメッセージを作成します。作成したメッセージは「$message」に代入してください。
 */
 
-
+$item = 'Bookcase';
+$price = 12000;
+$quantity = 2;
+$total_price = $price * $quantity;
 /*
  * 2．数値を扱って購入金額を求めましょう
  * 商品の名前を代入する変数「$item」を定義して任意の商品名を入れましょう（例：本棚）。
